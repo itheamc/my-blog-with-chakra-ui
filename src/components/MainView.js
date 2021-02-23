@@ -47,15 +47,15 @@ const MainView = () => {
     } else {
         if (err == null) {
             return (
-                <VStack className = "main-div" p = {6} h = "100%">
-                    <VStack className = "title-nav-div" w = "100%">
+                <VStack className = "main-div" h = "100%">
+                    <VStack className = "title-nav-div" w = "100%" p = {12}>
                         <TitleView />
                         <NavBar />
                         <Divider orientation="horizontal" />
         
                     </VStack>
-                    <HStack className = "content-sidebar-div" w = "100%">
-                        <VStack className = "posts-collection-div" w = "75%" p = {4}>
+                    <HStack className = "content-sidebar-div" w = "100%" p = {6}>
+                        <VStack className = "posts-collection-div" w = "75%" >
                             {
                                 posts.map(post => {
                                     return <PostView key = {post.id} post = {post} />

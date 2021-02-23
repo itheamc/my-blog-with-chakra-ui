@@ -4,12 +4,10 @@ import { VStack, Heading, Text} from '@chakra-ui/react'
 const TitleView = () => {
     return (
         <VStack 
-        className = "title-description-div" 
+        className = "title-description-div"
         w = "100%" 
-        p = {8} 
         align = "start">
             <Heading 
-                mb = {4}
                 bgGradient="linear(to-r, #FF0080,#FFFF00)"
                 bgClip="text"
                 fontWeight="extrabold"
