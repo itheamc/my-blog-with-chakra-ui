@@ -10,7 +10,7 @@ const TitleView = () => {
         align = "start">
             <Heading 
                 mb = {4}
-                bgGradient="linear(to-r, #FFFF00,#FF0080)"
+                bgGradient="linear(to-r, #FF0080,#FFFF00)"
                 bgClip="text"
                 fontWeight="extrabold"
                 align = "left"
