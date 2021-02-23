@@ -13,6 +13,7 @@ import {
     ModalCloseButton,
     Button,
     useDisclosure  } from '@chakra-ui/react'
+    import PostView from "./PostView";
 
 const Posts = () => {
     const [posts, setPosts] = useState([]);
@@ -65,7 +66,7 @@ const Posts = () => {
     // Returning the element as per the data
     if (isLoading) {
         return (
-            <Flex h = "100vh" p="6" align = "center" justify = "center" flexDirection = "row">
+            <Flex h = "100vh" p="6" align = "center" justify = "center">
                 <CircularProgress size = "100px" thickness = "12px" isIndeterminate color="#FF0080" />
             </Flex>
         )
@@ -73,17 +74,10 @@ const Posts = () => {
         if (err == null) {
             return (
                 <>
-                    <Box m = {8}>
+                    <Box m = {8} align = "center" justify = "center" display = "block">
                         {
                             posts.map(post => {
-                                return <Text
-                                key = {post.id} 
-                                bgGradient="linear(to-l, #ff1493,#1a365d)"
-                                bgClip="text"
-                                fontSize="2xl"
-                                fontWeight="extrabold"
-                                align = "left"
-                                onClick = {handleTitleClick}>{post.title}</Text>;
+                                return <PostView key = {post.id} post = {post} />
                             })
                         }
                         
