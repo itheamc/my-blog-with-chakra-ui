@@ -2,20 +2,21 @@ import React from 'react'
 import {
     Flex, 
     HStack, 
-    Text,
-    Button } from '@chakra-ui/react'
+    Button,
+    Spacer } from '@chakra-ui/react'
 
 
 const NavBar = () => {
     return (
-        <Flex className = "nav-bar-div" w = "100%" p = {2} >
-            <HStack>
-            <Button as="a" variant="outline" href="#" fontWeight="extrabold" color = "#ffae00">Home</Button>
-            <Button as="a" variant="outline" href="#" fontWeight="extrabold" color = "#ffae00">JavaScript</Button>
-            <Button as="a" variant="outline" href="#" fontWeight="extrabold" color = "#ffae00">Java</Button>
-            <Button as="a" variant="outline" href="#" fontWeight="extrabold" color = "#ffae00">HTML</Button>
-            <Button as="a" variant="outline" href="#" fontWeight="extrabold" color = "#ffae00">ReactJS</Button>
-            <Button as="a" variant="outline" href="#" fontWeight="extrabold" color = "#ffae00">Express</Button>
+        <Flex className = "nav-bar-div" w = "100%" >
+            <Spacer />
+            <HStack mr = {10}>
+            <Button as="a" variant="outline" href="#" fontWeight="extrabold" color = "#212121" bgGradient="linear(red.100 0%, orange.100 25%, yellow.100 50%)">Home</Button>
+            <Button as="a" variant="outline" href="#" fontWeight="extrabold" color = "#212121" bgGradient="linear(red.100 0%, orange.100 25%, yellow.100 50%)">JavaScript</Button>
+            <Button as="a" variant="outline" href="#" fontWeight="extrabold" color = "#212121" bgGradient="linear(red.100 0%, orange.100 25%, yellow.100 50%)">Java</Button>
+            <Button as="a" variant="outline" href="#" fontWeight="extrabold" color = "#212121" bgGradient="linear(red.100 0%, orange.100 25%, yellow.100 50%)">HTML</Button>
+            <Button as="a" variant="outline" href="#" fontWeight="extrabold" color = "#212121" bgGradient="linear(red.100 0%, orange.100 25%, yellow.100 50%)">ReactJS</Button>
+            <Button as="a" variant="outline" href="#" fontWeight="extrabold" color = "#212121" bgGradient="linear(red.100 0%, orange.100 25%, yellow.100 50%)">Express</Button>
         </HStack>
         </Flex>
         
