@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import { Box } from "@chakra-ui/react"
 import Posts from '../src/components/Posts'
+import MainView from './components/MainView'
 
 // Extend the theme to include custom colors, fonts, etc
 // const colors = {
@@ -16,7 +17,8 @@ import Posts from '../src/components/Posts'
 function App() {
   return (
     <Box className = "App">
-      <Posts />
+      {/* <Posts /> */}
+      <MainView />
     </Box>
   );
 }

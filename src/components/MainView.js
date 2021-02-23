@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react'
-import {
-    Box, 
+import { 
     Flex, 
+    HStack, 
+    VStack,
     Text,
-    CircularProgress } from '@chakra-ui/react'
+    CircularProgress,
+    Divider } from '@chakra-ui/react'
     import PostView from "./PostView";
+    import TitleView from './TitleView'
+    import NavBar from './NavBar'
 
-const Posts = () => {
+const MainView = () => {
     const [posts, setPosts] = useState([]);
     const [err, setErr] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -43,14 +47,25 @@ const Posts = () => {
     } else {
         if (err == null) {
             return (
-                    <Box m = {8} align = "center" justify = "center" display = "block">
-                        {
-                            posts.map(post => {
-                                return <PostView key = {post.id} post = {post} />
-                            })
-                        }
-                        
-                    </Box>
+                <VStack className = "main-div" p = {6} h = "100%">
+                    <VStack className = "title-nav-div" w = "100%">
+                        <TitleView />
+                        <NavBar />
+                        <Divider orientation="horizontal" />
+        
+                    </VStack>
+                    <HStack className = "content-sidebar-div" w = "100%">
+                        <VStack className = "posts-collection-div" w = "75%" p = {4}>
+                            {
+                                posts.map(post => {
+                                    return <PostView key = {post.id} post = {post} />
+                                })
+                            }
+                        </VStack>
+                        <VStack className = "sidebar-div" w = "25%" h = "600px" boxShadow="2xl"></VStack>
+                    </HStack>
+                    
+                </VStack>
             )
         } else {
             return (
@@ -67,9 +82,6 @@ const Posts = () => {
         }
     }
 
-
-
-    
 }
 
-export default Posts
+export default MainView
