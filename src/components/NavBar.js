@@ -11,12 +11,12 @@ const NavBar = () => {
     const [offsetY, setOffsetY] = useState(0);
 
     window.onscroll = () => {
-        console.log(window.pageYOffset);
+        // console.log(window.pageYOffset);
         setOffsetY(window.pageYOffset);
     }
     return (
         <Flex className = {offsetY > 157 ? "nav-bar-div sticky" : "nav-bar-div"} w = "100%" >
-            <HStack h = "100%" className = {offsetY > 157 ? "site-title" : "hidden-element"} ml = {12}>
+            <HStack h = "100%" className = {offsetY > 157 && window.innerWidth > 915 ? "site-title" : "hidden-element"} ml = {12}>
                 <Heading
                     bgGradient="linear(to-r, #FF0080,#FFFF00)"
                     bgClip="text"

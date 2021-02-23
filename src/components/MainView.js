@@ -5,7 +5,8 @@ import {
     VStack,
     Text,
     CircularProgress,
-    Divider } from '@chakra-ui/react'
+    Divider,
+    Button } from '@chakra-ui/react'
     import PostView from "./PostView";
     import TitleView from './TitleView'
     import NavBar from './NavBar'
@@ -55,13 +56,30 @@ const MainView = () => {
         
                     </VStack>
                     <HStack className = "content-sidebar-div" w = "100%" p = {6}>
-                        <VStack className = "posts-collection-div" w = "75%" >
-                            {
-                                posts.map(post => {
-                                    return <PostView key = {post.id} post = {post} />
-                                })
-                            }
+                        <VStack w = "75%" className = "row">
+                            <VStack className = "posts-collection-div" w = "100%" >
+                                {
+                                    posts.map((post, index) => {
+                                        if (index < 10) {
+                                            return <PostView key = {post.id} post = {post} />
+                                        }
+
+                                        return null
+                                    })
+                                }
+                            </VStack>
+                            <HStack className = "page-number-div">
+                                {
+                                  posts.map((post, index) => {
+                                    if (index > 0 && index % 10 === 0) {
+                                        return <Button key = {index / 10} rounded = "3xl" variant="link">{index / 10}</Button>
+                                    }
+                                    return null
+                                })  
+                                }
+                            </HStack>
                         </VStack>
+                        
                         <VStack className = "sidebar-div" w = "25%" h = "600px" boxShadow="2xl"></VStack>
                     </HStack>
                     
