@@ -5,16 +5,20 @@ import {
     VStack,
     Text,
     CircularProgress,
-    Divider,
-    Button } from '@chakra-ui/react'
+    Divider, 
+    Box } from '@chakra-ui/react'
     import PostView from "./PostView";
     import TitleView from './TitleView'
     import NavBar from './NavBar'
+    import FooterView from './footer/FooterView'
+    import HandleMorePost from './MorePostHandler/HandleMorePost';
 
 const MainView = () => {
     const [posts, setPosts] = useState([]);
     const [err, setErr] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
+    const [isMorePosts, setisMorePosts] = useState(false);
+    const [maxPosts, setMaxPosts] = useState(0);
 
     // Url of the posts
     const url = "https://jsonplaceholder.typicode.com/posts";
@@ -26,6 +30,7 @@ const MainView = () => {
         .then(data => {
             if (data.length > 0) {
                 setPosts(data);
+                setMaxPosts(10);
             } else {
                 setErr("No posts are available..")
             }
@@ -36,6 +41,16 @@ const MainView = () => {
             setIsLoading(false);
         });
     }, []);
+    
+
+    const loadMorePosts = () => {
+        setisMorePosts(true);
+        setTimeout(() => {
+            setMaxPosts(maxPosts + 10);
+            setisMorePosts(false);
+        }, 1500);
+    };
+
     
 
     // Returning the element as per the data
@@ -55,12 +70,12 @@ const MainView = () => {
                         <Divider orientation="horizontal" />
         
                     </VStack>
-                    <HStack className = "content-sidebar-div" w = "100%" p = {6}>
-                        <VStack w = "75%" className = "row">
+                    <HStack className = "content-sidebar-div" w = "100%" p = {6} mt = {14}>
+                        <VStack w = "70%" className = "row">
                             <VStack className = "posts-collection-div" w = "100%" >
                                 {
                                     posts.map((post, index) => {
-                                        if (index < 10) {
+                                        if (index < maxPosts) {
                                             return <PostView key = {post.id} post = {post} />
                                         }
 
@@ -68,20 +83,14 @@ const MainView = () => {
                                     })
                                 }
                             </VStack>
-                            <HStack className = "page-number-div">
-                                {
-                                  posts.map((post, index) => {
-                                    if (index > 0 && index % 10 === 0) {
-                                        return <Button key = {index / 10} rounded = "3xl" variant="link">{index / 10}</Button>
-                                    }
-                                    return null
-                                })  
-                                }
-                            </HStack>
+                            <HandleMorePost loadMorePosts = {loadMorePosts} isMorePosts = {isMorePosts} />
                         </VStack>
                         
-                        <VStack className = "sidebar-div" w = "25%" h = "600px" boxShadow="2xl"></VStack>
+                        <VStack className = {window.innerWidth > 915 ? "site-bar" : "display-none"} w = "30%" boxShadow="2xl"></VStack>
                     </HStack>
+                    <Box className = "footer-div" w = "100%" p = {8} bgColor = "white" boxShadow = "2xl">
+                        <FooterView />
+                    </Box>
                     
                 </VStack>
             )

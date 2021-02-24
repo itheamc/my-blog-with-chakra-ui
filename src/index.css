@@ -23,3 +23,19 @@ code {
 .hidden-element {
   visibility: hidden;
 }
+
+.display-none {
+  display: none;
+}
+
+.nav-bar-div {
+  transition: 3s;
+}
+
+.site-title {
+  transition: 2s;
+}
+
+.load-more-btn {
+  transition: 1s linear;
+}

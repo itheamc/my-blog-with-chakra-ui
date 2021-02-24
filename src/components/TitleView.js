@@ -17,7 +17,7 @@ const TitleView = () => {
                     THIS IS TITLE
             </Heading>
 
-            <Text fontSize = "md" fontStyle = "italic">This is the subtitle for this sample blog website</Text>
+            <Text fontSize = "md" fontStyle = "italic">"This is the subtitle for this sample blog website"</Text>
                             
         </VStack>
     )
