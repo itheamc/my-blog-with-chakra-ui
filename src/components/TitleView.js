@@ -8,7 +8,7 @@ const TitleView = () => {
         w = "100%" 
         align = "start">
             <Heading 
-                bgGradient="linear(to-r, #FF0080,#FFFF00)"
+                bgGradient="linear(to-r, blue.500, blue.300)"
                 bgClip="text"
                 fontWeight="extrabold"
                 align = "left"
@@ -17,7 +17,7 @@ const TitleView = () => {
                     THIS IS TITLE
             </Heading>
 
-            <Text fontSize = "md" fontStyle = "italic">"This is the subtitle for this sample blog website"</Text>
+            <Text fontSize = "md" fontStyle = "italic" color = "blue.400">"This is the subtitle for this sample blog website"</Text>
                             
         </VStack>
     )

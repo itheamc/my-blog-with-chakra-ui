@@ -18,7 +18,7 @@ const NavBar = () => {
         <Flex className = {offsetY > 157 ? "nav-bar-div sticky" : "nav-bar-div"} w = "100%" >
             <HStack h = "100%" className = {offsetY > 157 && window.innerWidth > 915 ? "site-title" : "hidden-element"} ml = {12}>
                 <Heading
-                    bgGradient="linear(to-r, #FF0080,#FFFF00)"
+                    bgGradient="linear(to-r, blue.500, blue.300)"
                     bgClip="text"
                     fontWeight="extrabold"
                     align = "left"
@@ -28,12 +28,12 @@ const NavBar = () => {
             
             <Spacer />
             <HStack mr = {10}>
-            <Button as="a" variant="ghost" href="#" fontWeight="extrabold" color = "#FF0080">Home</Button>
-            <Button as="a" variant="ghost" href="#" fontWeight="extrabold" color = "#FF0080">JavaScript</Button>
-            <Button as="a" variant="ghost" href="#" fontWeight="extrabold" color = "#FF0080">Java</Button>
-            <Button as="a" variant="ghost" href="#" fontWeight="extrabold" color = "#FF0080">HTML</Button>
-            <Button as="a" variant="ghost" href="#" fontWeight="extrabold" color = "#FF0080">ReactJS</Button>
-            <Button as="a" variant="ghost" href="#" fontWeight="extrabold" color = "#FF0080">Express</Button>
+            <Button as="a" variant="ghost" href="#" fontWeight="extrabold" color = "blue.500">Home</Button>
+            <Button as="a" variant="ghost" href="#" fontWeight="extrabold" color = "blue.500">JavaScript</Button>
+            <Button as="a" variant="ghost" href="#" fontWeight="extrabold" color = "blue.500">Java</Button>
+            <Button as="a" variant="ghost" href="#" fontWeight="extrabold" color = "blue.500">HTML</Button>
+            <Button as="a" variant="ghost" href="#" fontWeight="extrabold" color = "blue.500">ReactJS</Button>
+            <Button as="a" variant="ghost" href="#" fontWeight="extrabold" color = "blue.500">Express</Button>
         </HStack>
         </Flex>
         

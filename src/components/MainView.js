@@ -7,11 +7,12 @@ import {
     CircularProgress,
     Divider, 
     Box } from '@chakra-ui/react'
-    import PostView from "./PostView";
-    import TitleView from './TitleView'
-    import NavBar from './NavBar'
-    import FooterView from './footer/FooterView'
-    import HandleMorePost from './MorePostHandler/HandleMorePost';
+import PostView from "./PostView";
+import TitleView from './TitleView'
+import NavBar from './NavBar'
+import FooterView from './footer/FooterView'
+import HandleMorePost from './MorePostHandler/HandleMorePost';
+import SearchBox from './sidebar_components/SearchBox';
 
 const MainView = () => {
     const [posts, setPosts] = useState([]);
@@ -70,7 +71,7 @@ const MainView = () => {
                         <Divider orientation="horizontal" />
         
                     </VStack>
-                    <HStack className = "content-sidebar-div" w = "100%" p = {6} mt = {14}>
+                    <Flex className = "content-sidebar-div" w = "100%" p = {6} mt = {14}>
                         <VStack w = "70%" className = "row">
                             <VStack className = "posts-collection-div" w = "100%" >
                                 {
@@ -86,9 +87,13 @@ const MainView = () => {
                             <HandleMorePost loadMorePosts = {loadMorePosts} isMorePosts = {isMorePosts} />
                         </VStack>
                         
-                        <VStack className = {window.innerWidth > 915 ? "site-bar" : "display-none"} w = "30%" boxShadow="2xl"></VStack>
-                    </HStack>
-                    <Box className = "footer-div" w = "100%" p = {8} bgColor = "white" boxShadow = "2xl">
+                        <Box className = {window.innerWidth > 915 ? "site-bar" : "display-none"} w = "30%" ml = {8}>
+                            <VStack w = "100%" p = {8}>
+                                <SearchBox />
+                            </VStack>
+                        </Box>
+                    </Flex>
+                    <Box className = "footer-div" w = "100%" mt = {12} p = {8} bgColor = "white" boxShadow = "2xl">
                         <FooterView />
                     </Box>
                     

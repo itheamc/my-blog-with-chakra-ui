@@ -8,8 +8,8 @@ const HandleMorePost = (props) => {
                 <Button className = "load-more-btn" colorScheme="twitter" onClick = {props.loadMorePosts} display = {props.isMorePosts ? "none" : "block"}>
                     Load More...
                 </Button>
-                <Box w = "100%" display = {props.isMorePosts ? "block" : "none"}>
-                    <SkeletonText mt="4" noOfLines={3} spacing="4" />
+                <Box w = "100%" p = {6} display = {props.isMorePosts ? "block" : "none"}>
+                    <SkeletonText noOfLines={3} spacing="4" />
                 </Box>
             </VStack>
                               
