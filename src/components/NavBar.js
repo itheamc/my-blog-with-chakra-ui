@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import {
     Flex, 
     HStack,
@@ -9,14 +9,23 @@ import {
 
 const NavBar = () => {
     const [offsetY, setOffsetY] = useState(0);
+    const [navOffsetTop, setNavOffsetTop] = useState(0);
+    const nav_div = useRef(null);
+
+
+    useEffect(() => {
+        nav_div.current.focus();
+        setNavOffsetTop(nav_div.current.offsetTop);
+        console.log(navOffsetTop)
+    }, [navOffsetTop]);
 
     window.onscroll = () => {
-        // console.log(window.pageYOffset);
+        // console.log(offsetY);
         setOffsetY(window.pageYOffset);
     }
     return (
-        <Flex className = {offsetY > 157 ? "nav-bar-div sticky" : "nav-bar-div"} w = "100%" >
-            <HStack h = "100%" className = {offsetY > 157 && window.innerWidth > 915 ? "site-title" : "hidden-element"} ml = {12}>
+        <Flex ref = {nav_div} className = {offsetY > navOffsetTop ? "nav-bar-div sticky" : "nav-bar-div"} w = "100%" id = "nav-bar-div" >
+            <HStack h = "100%" className = {offsetY > navOffsetTop && window.innerWidth > 915 ? "site-title" : "hidden-element"} ml = {12}>
                 <Heading
                     bgGradient="linear(to-r, blue.500, blue.300)"
                     bgClip="text"
