@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { 
     Flex, 
-    HStack, 
     VStack,
     Text,
     CircularProgress,
@@ -13,6 +12,7 @@ import NavBar from './NavBar'
 import FooterView from './footer/FooterView'
 import HandleMorePost from './MorePostHandler/HandleMorePost';
 import SearchBox from './sidebar_components/SearchBox';
+import NoPostView from './NoPostHandler/NoPostView';
 
 const MainView = () => {
     const [posts, setPosts] = useState([]);
@@ -75,21 +75,23 @@ const MainView = () => {
                         <VStack w = "70%" className = "row">
                             <VStack className = "posts-collection-div" w = "100%" >
                                 {
+                                    posts.length > 0 ? 
                                     posts.map((post, index) => {
                                         if (index < maxPosts) {
                                             return <PostView key = {post.id} post = {post} />
                                         }
 
                                         return null
-                                    })
+                                    }) : <NoPostView />
                                 }
                             </VStack>
-                            <HandleMorePost loadMorePosts = {loadMorePosts} isMorePosts = {isMorePosts} />
+                            {posts.length > 10 ? <HandleMorePost loadMorePosts = {loadMorePosts} isMorePosts = {isMorePosts} /> : null}
+                            
                         </VStack>
                         
                         <Box className = {window.innerWidth > 915 ? "site-bar" : "display-none"} w = "30%" ml = {8}>
                             <VStack w = "100%" p = {8}>
-                                <SearchBox />
+                                <SearchBox posts = {posts} setPosts = {setPosts} />
                             </VStack>
                         </Box>
                     </Flex>
