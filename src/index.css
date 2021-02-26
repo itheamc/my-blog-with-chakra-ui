@@ -25,7 +25,13 @@ code {
 }
 
 .display-none {
+  width: 0;
   display: none;
+}
+
+.site-bar {
+  width: 30%;
+  display: block;
 }
 
 .nav-bar-div {
