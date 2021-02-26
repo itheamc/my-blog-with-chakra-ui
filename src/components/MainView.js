@@ -20,6 +20,7 @@ const MainView = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [isMorePosts, setisMorePosts] = useState(false);
     const [maxPosts, setMaxPosts] = useState(0);
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
     // Url of the posts
     const url = "https://jsonplaceholder.typicode.com/posts";
@@ -52,6 +53,17 @@ const MainView = () => {
         }, 1500);
     };
 
+
+    // Function to handle the window with for responsiveness
+    const handleWindowResize = () => {
+        setWindowWidth(window.innerWidth);
+        console.log(window.innerWidth);
+    }
+
+    // window.onresize = handleWindowResize;
+
+    window.addEventListener('resize', handleWindowResize);
+
     
 
     // Returning the element as per the data
@@ -67,12 +79,12 @@ const MainView = () => {
                 <VStack className = "main-div" h = "100%">
                     <VStack className = "title-nav-div" w = "100%" p = {12}>
                         <TitleView />
-                        <NavBar />
+                        <NavBar windowWidth = {windowWidth}/>
                         <Divider orientation="horizontal" />
         
                     </VStack>
                     <Flex className = "content-sidebar-div" w = "100%" p = {6} mt = {14}>
-                        <VStack w = "70%" className = "row">
+                        <VStack width = {windowWidth < 700 ? "100%" : "70%"} className = "row">
                             <VStack className = "posts-collection-div" w = "100%" >
                                 {
                                     posts.length > 0 ? 
@@ -89,7 +101,7 @@ const MainView = () => {
                             
                         </VStack>
                         
-                        <Box className = {window.innerWidth > 915 ? "site-bar" : "display-none"} w = "30%" ml = {8}>
+                        <Box className = {windowWidth > 700 ? "site-bar" : "display-none"} ml = {8}>
                             <VStack w = "100%" p = {8}>
                                 <SearchBox posts = {posts} setPosts = {setPosts} />
                             </VStack>
