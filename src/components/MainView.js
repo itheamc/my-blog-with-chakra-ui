@@ -25,9 +25,22 @@ const MainView = () => {
     // Url of the posts
     const url = "https://jsonplaceholder.typicode.com/posts";
     const maxWidth4DesktopView = 760;
-
+    
     // Implementing useEffect function
     useEffect(() => {
+        fetchPosts();   // Calling function to fetch post
+
+        // listening windows resize event
+        window.addEventListener('resize', handleWindowResize);
+
+        // useEffect cleanup function
+        return () => {
+            window.removeEventListener('resize', handleWindowResize);
+        }
+    }, []);
+    
+    // Function to fetch posts from the api using fetch()
+    const fetchPosts = () => {
         if (posts.length < 1) {
             fetch(url)
             .then(response => response.json())
@@ -45,16 +58,30 @@ const MainView = () => {
                 setIsLoading(false);
             });
         }
+    }
 
-        // listening windows resize event
-        window.addEventListener('resize', handleWindowResize);
 
-        return () => {
-            window.removeEventListener('resize', handleWindowResize);
-        }
-    });
+    // Function to fetch posts from the api using async-await function
+    //  const fetchPosts = async () => {
+    //     try {
+    //         const response = await fetch(url);
+    //         const data = await response.json();
+    //         if (data.length > 0) {
+    //             setPosts(data);
+    //             setMaxPosts(10);
+    //         } else {
+    //             setErr("No posts are available..")
+    //         }
+    //         setIsLoading(false);
+    //     } catch (error) {
+    //         setErr("Something went wrong!!");
+    //         console.log(error);
+    //         setIsLoading(false);
+    //     }
+    // }
     
 
+    // Functions to show more posts on the list
     const loadMorePosts = () => {
         setisMorePosts(true);
         setTimeout(() => {
