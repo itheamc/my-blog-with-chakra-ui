@@ -24,6 +24,7 @@ const MainView = () => {
 
     // Url of the posts
     const url = "https://jsonplaceholder.typicode.com/posts";
+    const maxWidth4DesktopView = 760;
 
     // Implementing useEffect function
     useEffect(() => {
@@ -79,12 +80,12 @@ const MainView = () => {
                 <VStack className = "main-div" h = "100%">
                     <VStack className = "title-nav-div" w = "100%" p = {12}>
                         <TitleView />
-                        <NavBar windowWidth = {windowWidth}/>
+                        <NavBar windowWidth = {windowWidth} maxWidth4DesktopView = {maxWidth4DesktopView} />
                         <Divider orientation="horizontal" />
         
                     </VStack>
                     <Flex className = "content-sidebar-div" w = "100%" p = {6} mt = {14}>
-                        <VStack width = {windowWidth < 700 ? "100%" : "70%"} className = "row">
+                        <VStack width = {windowWidth < maxWidth4DesktopView ? "100%" : "70%"} className = "row">
                             <VStack className = "posts-collection-div" w = "100%" >
                                 {
                                     posts.length > 0 ? 
@@ -101,7 +102,7 @@ const MainView = () => {
                             
                         </VStack>
                         
-                        <Box className = {windowWidth > 700 ? "site-bar" : "display-none"} ml = {8}>
+                        <Box className = {windowWidth > maxWidth4DesktopView ? "site-bar" : "display-none"} ml = {8} id = "side-bar">
                             <VStack w = "100%" p = {8}>
                                 <SearchBox posts = {posts} setPosts = {setPosts} />
                             </VStack>

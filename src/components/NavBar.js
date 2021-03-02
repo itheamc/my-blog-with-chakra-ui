@@ -31,10 +31,10 @@ const NavBar = (props) => {
         setOffsetY(window.pageYOffset);
     }
 
-    if (props.windowWidth > 700) {
+    if (props.windowWidth > props.maxWidth4DesktopView) {
         return (
             <Flex ref = {nav_div} className = {offsetY > navOffsetTop ? "nav-bar-div sticky" : "nav-bar-div"} w = "100%" id = "nav-bar-div" >
-                <HStack h = "100%" className = {offsetY > navOffsetTop && props.windowWidth > 700 ? "site-title" : "hidden-element"} ml = {props.windowWidth > 700 ? 12 : 0}>
+                <HStack h = "100%" className = {offsetY > navOffsetTop && props.windowWidth > props.maxWidth4DesktopView ? "site-title" : "hidden-element"} ml = {props.windowWidth > props.maxWidth4DesktopView ? 12 : 0}>
                     <Heading
                         bgGradient="linear(to-r, blue.500, blue.300)"
                         bgClip="text"
@@ -44,7 +44,7 @@ const NavBar = (props) => {
                         size="xl">THIS IS TITLE</Heading>   
                 </HStack>
                 
-                {props.windowWidth > 700 ? <Spacer /> : null}
+                {props.windowWidth > props.maxWidth4DesktopView ? <Spacer /> : null}
                 <HStack mr = {10}>
                     <Button as="a" variant="ghost" href="#" fontWeight="extrabold" color = "blue.500">Home</Button>
                     <Button as="a" variant="ghost" href="#" fontWeight="extrabold" color = "blue.500">JavaScript</Button>

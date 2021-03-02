@@ -42,6 +42,6 @@ code {
   transition: 2s;
 }
 
-.load-more-btn {
-  transition: 1s linear;
+.load-more-btn, .row {
+  transition: 300ms linear;
 }
