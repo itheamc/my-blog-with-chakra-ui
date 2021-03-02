@@ -28,22 +28,31 @@ const MainView = () => {
 
     // Implementing useEffect function
     useEffect(() => {
-        fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            if (data.length > 0) {
-                setPosts(data);
-                setMaxPosts(10);
-            } else {
-                setErr("No posts are available..")
-            }
-            setIsLoading(false);
-        })
-        .catch(error => {
-            setErr("Something went wrong!!");
-            setIsLoading(false);
-        });
-    }, []);
+        if (posts.length < 1) {
+            fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                if (data.length > 0) {
+                    setPosts(data);
+                    setMaxPosts(10);
+                } else {
+                    setErr("No posts are available..")
+                }
+                setIsLoading(false);
+            })
+            .catch(error => {
+                setErr("Something went wrong!!");
+                setIsLoading(false);
+            });
+        }
+
+        // listening windows resize event
+        window.addEventListener('resize', handleWindowResize);
+
+        return () => {
+            window.removeEventListener('resize', handleWindowResize);
+        }
+    });
     
 
     const loadMorePosts = () => {
@@ -60,10 +69,6 @@ const MainView = () => {
         setWindowWidth(window.innerWidth);
         console.log(window.innerWidth);
     }
-
-    // window.onresize = handleWindowResize;
-
-    window.addEventListener('resize', handleWindowResize);
 
     
 
